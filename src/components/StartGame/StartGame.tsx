@@ -1,5 +1,6 @@
 import { Container } from "./StartGameStyles";
 import { Props } from "../../types";
+import { Link } from "react-router-dom";
 
 export default function StartGame({
   theme,
@@ -63,7 +64,9 @@ export default function StartGame({
           </button>
         </div>
       </div>
-      <button className="start">Start Game</button>
+      <Link to="game">
+        <button className="start">Start Game</button>
+      </Link>
     </Container>
   );
 }

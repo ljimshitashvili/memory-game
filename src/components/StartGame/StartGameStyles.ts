@@ -109,4 +109,8 @@ export const Container = styled.div<{
     text-align: center;
     color: #fcfcfc;
   }
+
+  a {
+    width: 100%;
+  }
 `;
