@@ -2,6 +2,7 @@ import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import { StartGame } from "./components";
 import { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [theme, setTheme] = useState<string>("numbers");
@@ -9,17 +10,19 @@ function App() {
   const [size, setSize] = useState<string>("4x4");
 
   return (
-    <Container>
-      <GlobalStyles />
-      <StartGame
-        theme={theme}
-        setTheme={setTheme}
-        players={players}
-        setPlayers={setPlayers}
-        size={size}
-        setSize={setSize}
-      />
-    </Container>
+    <Router>
+      <Container>
+        <GlobalStyles />
+        <StartGame
+          theme={theme}
+          setTheme={setTheme}
+          players={players}
+          setPlayers={setPlayers}
+          size={size}
+          setSize={setSize}
+        />
+      </Container>
+    </Router>
   );
 }
 
