@@ -1,6 +1,6 @@
 import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
-import { StartGame, SmallSize } from "./components";
+import { StartGame, GameMode } from "./components";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -29,7 +29,10 @@ function App() {
               />
             }
           ></Route>
-          <Route path="game" element={<SmallSize setPath={setPath} />}></Route>
+          <Route
+            path="game"
+            element={<GameMode size={size} setPath={setPath} />}
+          ></Route>
         </Routes>
       </Container>
     </Router>
