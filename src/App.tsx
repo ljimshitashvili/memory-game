@@ -1,14 +1,40 @@
 import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import { StartGame, GameMode } from "./components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { shuffle } from "lodash";
 
 function App() {
   const [path, setPath] = useState<string>("");
   const [theme, setTheme] = useState<string>("numbers");
   const [players, setPlayers] = useState<number>(1);
   const [size, setSize] = useState<string>("4x4");
+  const [cards, setCards] = useState<Array<string>>([
+    "1",
+    "1",
+    "2",
+    "2",
+    "3",
+    "3",
+    "4",
+    "4",
+    "5",
+    "5",
+    "6",
+    "6",
+    "7",
+    "7",
+    "8",
+    "8",
+  ]);
+  const [flipped, setFlipped] = useState<boolean[]>(
+    Array(cards.length).fill(false)
+  );
+
+  useEffect(() => {
+    setCards(shuffle(cards));
+  }, []);
 
   return (
     <Router>
@@ -31,7 +57,15 @@ function App() {
           ></Route>
           <Route
             path="game"
-            element={<GameMode size={size} setPath={setPath} />}
+            element={
+              <GameMode
+                size={size}
+                setPath={setPath}
+                cards={cards}
+                flipped={flipped}
+                setFlipped={setFlipped}
+              />
+            }
           ></Route>
         </Routes>
       </Container>
