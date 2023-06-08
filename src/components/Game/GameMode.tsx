@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import { Container } from "./GameModeStyles";
 import { GameModeProps } from "../../types";
 import SoloFinishCard from "./SoloFinishCard";
-import { Overlay } from "../Header/HeaderStyles";
 
 export default function GameMode({
   path,
