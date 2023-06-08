@@ -29,4 +29,8 @@ export const MainContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 13px;
+
+  img {
+    width: 50%;
+  }
 `;

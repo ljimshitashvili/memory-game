@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import FooterSolo from "../Footer/FooterSolo";
 import { GameModeProps } from "../../types";
 
-export default function smallSize({
+export default function SmallSize({
   setPath,
   cards,
   setCards,
@@ -22,13 +22,13 @@ export default function smallSize({
   setElapsedTime,
   count,
   setCount,
+  icons,
+  setIcons,
+  theme,
 }: GameModeProps) {
   const location = useLocation();
   setPath(location.pathname);
-  useEffect(() => {
-    const initialCards = cards.concat(cards);
-    setCards(shuffle(initialCards));
-  }, []);
+
   const changeFlip = (index: number) => {
     if (
       disabled ||
@@ -47,7 +47,6 @@ export default function smallSize({
     }
 
     if (flippedCards.length === 1) {
-      setDisabled(true);
       setDisabled(true);
       setCount(count + 1);
 
@@ -74,7 +73,7 @@ export default function smallSize({
     return matchedCards.includes(index);
   };
 
-  const shuffle = (array: any[]) => {
+  const shuffle = (array: string[]) => {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -85,6 +84,13 @@ export default function smallSize({
     }
     return shuffledArray;
   };
+
+  useEffect(() => {
+    const initialCards = cards.concat(cards);
+    setCards(shuffle(initialCards));
+    const initialIcons = shuffle(icons);
+    setIcons(initialIcons);
+  }, []);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -105,16 +111,28 @@ export default function smallSize({
 
   return (
     <MainContainer>
-      {cards.map((card, index) => (
-        <Container
-          key={index}
-          onClick={() => changeFlip(index)}
-          isMatched={isCardMatched(index)}
-          isFlipped={isCardFlipped(index)}
-        >
-          <h1>{isCardFlipped(index) ? card : ""}</h1>
-        </Container>
-      ))}
+      {theme === "numbers"
+        ? cards.map((card, index) => (
+            <Container
+              key={index}
+              onClick={() => changeFlip(index)}
+              isMatched={isCardMatched(index)}
+              isFlipped={isCardFlipped(index)}
+            >
+              <h1>{isCardFlipped(index) ? card : ""}</h1>
+            </Container>
+          ))
+        : icons.map((icon, index) => (
+            <Container
+              key={index}
+              onClick={() => changeFlip(index)}
+              isMatched={isCardMatched(index)}
+              isFlipped={isCardFlipped(index)}
+            >
+              <img src={isCardFlipped(index) ? icon : ""} />
+            </Container>
+          ))}
+
       <FooterSolo count={count} elapsedTime={elapsedTime} />
     </MainContainer>
   );

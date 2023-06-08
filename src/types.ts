@@ -29,4 +29,7 @@ export interface GameModeProps {
   setCount: (count: number) => void;
   done: boolean;
   setDone: (done: boolean) => void;
+  icons: string[];
+  setIcons: (icons: string[]) => void;
+  theme: string;
 }

@@ -10,7 +10,7 @@ export default function Header({ done }: Props) {
 
   const handleRestartClick = () => {
     setMenu(!menu);
-    location.reload();
+    window.location.reload();
   };
 
   const handleClick = () => {

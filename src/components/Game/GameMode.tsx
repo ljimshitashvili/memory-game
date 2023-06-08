@@ -25,6 +25,9 @@ export default function GameMode({
   setCount,
   done,
   setDone,
+  icons,
+  setIcons,
+  theme,
 }: GameModeProps) {
   if (matchedCards.length === cards.length) {
     setDone(true);
@@ -34,6 +37,8 @@ export default function GameMode({
     <Container>
       <Header done={done} />
       <SmallSize
+        icons={icons}
+        setIcons={setIcons}
         done={done}
         setDone={setDone}
         path={path}
@@ -54,6 +59,7 @@ export default function GameMode({
         setElapsedTime={setElapsedTime}
         count={count}
         setCount={setCount}
+        theme={theme}
       />
       <SoloFinishCard
         done={done}

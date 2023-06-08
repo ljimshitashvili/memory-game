@@ -4,6 +4,16 @@ import { StartGame, GameMode } from "./components";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { shuffle } from "lodash";
+import {
+  facebook,
+  instagram,
+  twitter,
+  youtube,
+  globe,
+  envelope,
+  linkedin,
+  settings,
+} from "./assets";
 
 function App() {
   const [path, setPath] = useState<string>("");
@@ -27,6 +37,24 @@ function App() {
     "7",
     "8",
     "8",
+  ]);
+  const [icons, setIcons] = useState<string[]>([
+    facebook,
+    facebook,
+    instagram,
+    instagram,
+    twitter,
+    twitter,
+    youtube,
+    youtube,
+    globe,
+    globe,
+    envelope,
+    envelope,
+    linkedin,
+    linkedin,
+    settings,
+    settings,
   ]);
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
@@ -85,6 +113,9 @@ function App() {
                 setElapsedTime={setElapsedTime}
                 count={count}
                 setCount={setCount}
+                icons={icons}
+                setIcons={setIcons}
+                theme={theme}
               />
             }
           ></Route>
