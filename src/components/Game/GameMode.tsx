@@ -4,6 +4,7 @@ import { Container } from "./GameModeStyles";
 import { GameModeProps } from "../../types";
 
 export default function GameMode({
+  path,
   setPath,
   cards,
   setCards,
@@ -26,6 +27,7 @@ export default function GameMode({
     <Container>
       <Header />
       <SmallSize
+        path={path}
         setPath={setPath}
         cards={cards}
         flippedCards={flippedCards}

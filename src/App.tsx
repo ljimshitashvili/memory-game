@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     setCards(shuffle(cards));
-  }, []);
+  }, [path]);
 
   return (
     <Router>
@@ -64,6 +64,7 @@ function App() {
             path="game"
             element={
               <GameMode
+                path={path}
                 setPath={setPath}
                 cards={cards}
                 setCards={setCards}

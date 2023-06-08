@@ -9,6 +9,7 @@ export interface StartGameProps {
 }
 
 export interface GameModeProps {
+  path: string;
   setPath: (path: string) => void;
   cards: string[];
   setCards: (cards: string[]) => void;

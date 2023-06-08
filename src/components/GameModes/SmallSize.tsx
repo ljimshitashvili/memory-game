@@ -5,6 +5,7 @@ import FooterSolo from "../Footer/FooterSolo";
 import { GameModeProps } from "../../types";
 
 export default function smallSize({
+  path,
   setPath,
   cards,
   setCards,
@@ -110,7 +111,6 @@ export default function smallSize({
       {cards.map((card, index) => (
         <Container
           key={index}
-          className={`card ${isCardFlipped(index) ? "flipped" : ""}`}
           onClick={() => changeFlip(index)}
           isMatched={isCardMatched(index)}
           isFlipped={isCardFlipped(index)}

@@ -34,8 +34,7 @@ export const Menu = styled.div<{ menu: boolean }>`
   top: 222px;
   padding: 24px;
 
-  button,
-  a {
+  button {
     width: 100%;
     height: 48px;
     background-color: #dfe7ec;
