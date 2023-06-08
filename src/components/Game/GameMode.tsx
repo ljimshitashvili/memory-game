@@ -1,30 +1,9 @@
 import { SmallSize } from "..";
 import Header from "../Header/Header";
 import { Container } from "./GameModeStyles";
-
-interface Props {
-  size: string;
-  setPath: (path: string) => void;
-  cards: string[];
-  setCards: (cards: string[]) => void;
-  flippedCards: number[];
-  setFlippedCards: (flippedCards: number[]) => void;
-  matchedCards: number[];
-  setMatchedCards: (matchedCards: number[]) => void;
-  disabled: boolean;
-  setDisabled: (disabled: boolean) => void;
-  startTime: number;
-  setStartTime: (startTime: number) => void;
-  endTime: number;
-  setEndTime: (endTime: number) => void;
-  elapsedTime: string;
-  setElapsedTime: (elapsedTime: string) => void;
-  count: number;
-  setCount: (count: number) => void;
-}
+import { GameModeProps } from "../../types";
 
 export default function GameMode({
-  size,
   setPath,
   cards,
   setCards,
@@ -42,7 +21,7 @@ export default function GameMode({
   setElapsedTime,
   count,
   setCount,
-}: Props) {
+}: GameModeProps) {
   return (
     <Container>
       <Header />

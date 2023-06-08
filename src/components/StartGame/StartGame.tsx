@@ -1,6 +1,6 @@
 import { Container } from "./StartGameStyles";
-import { Props } from "../../types";
-import { Link } from "react-router-dom";
+import { StartGameProps } from "../../types";
+import { Link, useLocation } from "react-router-dom";
 
 export default function StartGame({
   theme,
@@ -9,7 +9,11 @@ export default function StartGame({
   setPlayers,
   size,
   setSize,
-}: Props) {
+  setPath,
+}: StartGameProps) {
+  const location = useLocation();
+  setPath(location.pathname);
+
   const changePlayerValue = (e: number) => {
     setPlayers(e);
   };

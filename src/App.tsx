@@ -56,6 +56,7 @@ function App() {
                 setPlayers={setPlayers}
                 size={size}
                 setSize={setSize}
+                setPath={setPath}
               />
             }
           ></Route>
@@ -63,7 +64,6 @@ function App() {
             path="game"
             element={
               <GameMode
-                size={size}
                 setPath={setPath}
                 cards={cards}
                 setCards={setCards}

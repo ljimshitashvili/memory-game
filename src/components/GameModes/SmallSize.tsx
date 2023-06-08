@@ -2,26 +2,7 @@ import { useEffect } from "react";
 import { Container, MainContainer } from "./SmallSizeStyles";
 import { useLocation } from "react-router-dom";
 import FooterSolo from "../Footer/FooterSolo";
-
-interface Props {
-  setPath: (path: string) => void;
-  cards: string[];
-  setCards: (cards: string[]) => void;
-  flippedCards: number[];
-  setFlippedCards: (flippedCards: number[]) => void;
-  matchedCards: number[];
-  setMatchedCards: (matchedCards: number[]) => void;
-  disabled: boolean;
-  setDisabled: (disabled: boolean) => void;
-  startTime: number;
-  setStartTime: (startTime: number) => void;
-  endTime: number;
-  setEndTime: (endTime: number) => void;
-  elapsedTime: string;
-  setElapsedTime: (elapsedTime: string) => void;
-  count: number;
-  setCount: (count: number) => void;
-}
+import { GameModeProps } from "../../types";
 
 export default function smallSize({
   setPath,
@@ -41,7 +22,7 @@ export default function smallSize({
   setElapsedTime,
   count,
   setCount,
-}: Props) {
+}: GameModeProps) {
   const location = useLocation();
   setPath(location.pathname);
 
