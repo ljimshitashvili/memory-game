@@ -34,6 +34,11 @@ export const Menu = styled.div<{ menu: boolean }>`
   top: 222px;
   padding: 24px;
 
+  .restart {
+    background-color: #fda214;
+    color: #fcfcfc;
+  }
+
   button {
     width: 100%;
     height: 48px;
@@ -52,8 +57,8 @@ export const Menu = styled.div<{ menu: boolean }>`
   }
 `;
 
-export const Overlay = styled.div<{ menu: boolean }>`
-  display: ${(p) => (p.menu ? "" : "none")};
+export const Overlay = styled.div<{ menu: boolean; done: boolean }>`
+  display: ${(p) => (p.menu ? "" : p.done ? "" : "none")};
   width: 100vw;
   height: 100vh;
   background-color: black;

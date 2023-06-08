@@ -1,7 +1,11 @@
 import { Container, Menu, Overlay } from "./HeaderStyles";
 import { useState } from "react";
 
-export default function Header() {
+interface Props {
+  done: boolean;
+}
+
+export default function Header({ done }: Props) {
   const [menu, setMenu] = useState<boolean>(false);
 
   const handleRestartClick = () => {
@@ -28,9 +32,11 @@ export default function Header() {
       >
         Menu
       </button>
-      <Overlay menu={menu} />
+      <Overlay menu={menu} done={done} />
       <Menu menu={menu}>
-        <button onClick={handleRestartClick}>Restart</button>
+        <button className="restart" onClick={handleRestartClick}>
+          Restart
+        </button>
         <button onClick={handleNewGameClick}>New Game</button>
         <button onClick={handleClick}>Resume Game</button>
       </Menu>

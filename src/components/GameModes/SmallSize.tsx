@@ -5,7 +5,6 @@ import FooterSolo from "../Footer/FooterSolo";
 import { GameModeProps } from "../../types";
 
 export default function smallSize({
-  path,
   setPath,
   cards,
   setCards,
@@ -26,12 +25,10 @@ export default function smallSize({
 }: GameModeProps) {
   const location = useLocation();
   setPath(location.pathname);
-
   useEffect(() => {
     const initialCards = cards.concat(cards);
     setCards(shuffle(initialCards));
   }, []);
-
   const changeFlip = (index: number) => {
     if (
       disabled ||

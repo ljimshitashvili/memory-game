@@ -2,6 +2,8 @@ import { SmallSize } from "..";
 import Header from "../Header/Header";
 import { Container } from "./GameModeStyles";
 import { GameModeProps } from "../../types";
+import SoloFinishCard from "./SoloFinishCard";
+import { Overlay } from "../Header/HeaderStyles";
 
 export default function GameMode({
   path,
@@ -22,11 +24,19 @@ export default function GameMode({
   setElapsedTime,
   count,
   setCount,
+  done,
+  setDone,
 }: GameModeProps) {
+  if (matchedCards.length === cards.length) {
+    setDone(true);
+  }
+
   return (
     <Container>
-      <Header />
+      <Header done={done} />
       <SmallSize
+        done={done}
+        setDone={setDone}
         path={path}
         setPath={setPath}
         cards={cards}
@@ -45,6 +55,12 @@ export default function GameMode({
         setElapsedTime={setElapsedTime}
         count={count}
         setCount={setCount}
+      />
+      <SoloFinishCard
+        done={done}
+        elapsedTime={elapsedTime}
+        count={count}
+        setDone={setDone}
       />
     </Container>
   );

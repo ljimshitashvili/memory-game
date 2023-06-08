@@ -35,6 +35,7 @@ function App() {
   const [endTime, setEndTime] = useState<number>(0);
   const [elapsedTime, setElapsedTime] = useState<string>("00:00");
   const [count, setCount] = useState<number>(0);
+  const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
     setCards(shuffle(cards));
@@ -64,6 +65,8 @@ function App() {
             path="game"
             element={
               <GameMode
+                done={done}
+                setDone={setDone}
                 path={path}
                 setPath={setPath}
                 cards={cards}

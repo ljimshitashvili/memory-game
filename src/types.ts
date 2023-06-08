@@ -27,4 +27,6 @@ export interface GameModeProps {
   setElapsedTime: (elapsedTime: string) => void;
   count: number;
   setCount: (count: number) => void;
+  done: boolean;
+  setDone: (done: boolean) => void;
 }
