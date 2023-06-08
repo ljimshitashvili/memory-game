@@ -13,6 +13,14 @@ interface Props {
   setMatchedCards: (matchedCards: number[]) => void;
   disabled: boolean;
   setDisabled: (disabled: boolean) => void;
+  startTime: number;
+  setStartTime: (startTime: number) => void;
+  endTime: number;
+  setEndTime: (endTime: number) => void;
+  elapsedTime: string;
+  setElapsedTime: (elapsedTime: string) => void;
+  count: number;
+  setCount: (count: number) => void;
 }
 
 export default function GameMode({
@@ -26,6 +34,14 @@ export default function GameMode({
   setMatchedCards,
   disabled,
   setDisabled,
+  startTime,
+  setStartTime,
+  endTime,
+  setEndTime,
+  elapsedTime,
+  setElapsedTime,
+  count,
+  setCount,
 }: Props) {
   return (
     <Container>
@@ -40,6 +56,14 @@ export default function GameMode({
         setMatchedCards={setMatchedCards}
         disabled={disabled}
         setDisabled={setDisabled}
+        startTime={startTime}
+        setStartTime={setStartTime}
+        endTime={endTime}
+        setEndTime={setEndTime}
+        elapsedTime={elapsedTime}
+        setElapsedTime={setElapsedTime}
+        count={count}
+        setCount={setCount}
       />
     </Container>
   );

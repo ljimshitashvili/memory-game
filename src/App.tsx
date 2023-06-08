@@ -31,6 +31,10 @@ function App() {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
   const [disabled, setDisabled] = useState<boolean>(false);
+  const [startTime, setStartTime] = useState<number>(0);
+  const [endTime, setEndTime] = useState<number>(0);
+  const [elapsedTime, setElapsedTime] = useState<string>("00:00");
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     setCards(shuffle(cards));
@@ -69,6 +73,14 @@ function App() {
                 setMatchedCards={setMatchedCards}
                 disabled={disabled}
                 setDisabled={setDisabled}
+                startTime={startTime}
+                setStartTime={setStartTime}
+                endTime={endTime}
+                setEndTime={setEndTime}
+                elapsedTime={elapsedTime}
+                setElapsedTime={setElapsedTime}
+                count={count}
+                setCount={setCount}
               />
             }
           ></Route>

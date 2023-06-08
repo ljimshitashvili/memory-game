@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Container, MainContainer } from "./SmallSizeStyles";
 import { useLocation } from "react-router-dom";
+import FooterSolo from "../Footer/FooterSolo";
 
 interface Props {
   setPath: (path: string) => void;
@@ -12,6 +13,14 @@ interface Props {
   setMatchedCards: (matchedCards: number[]) => void;
   disabled: boolean;
   setDisabled: (disabled: boolean) => void;
+  startTime: number;
+  setStartTime: (startTime: number) => void;
+  endTime: number;
+  setEndTime: (endTime: number) => void;
+  elapsedTime: string;
+  setElapsedTime: (elapsedTime: string) => void;
+  count: number;
+  setCount: (count: number) => void;
 }
 
 export default function smallSize({
@@ -24,6 +33,14 @@ export default function smallSize({
   setMatchedCards,
   disabled,
   setDisabled,
+  startTime,
+  setStartTime,
+  endTime,
+  setEndTime,
+  elapsedTime,
+  setElapsedTime,
+  count,
+  setCount,
 }: Props) {
   const location = useLocation();
   setPath(location.pathname);
@@ -44,8 +61,16 @@ export default function smallSize({
 
     setFlippedCards([...flippedCards, index]);
 
+    if (flippedCards.length === 0) {
+      if (startTime === 0) {
+        setStartTime(Date.now());
+      }
+    }
+
     if (flippedCards.length === 1) {
       setDisabled(true);
+      setDisabled(true);
+      setCount(count + 1);
 
       setTimeout(() => {
         if (cards[index] === cards[flippedCards[0]]) {
@@ -54,6 +79,10 @@ export default function smallSize({
 
         setFlippedCards([]);
         setDisabled(false);
+
+        if (matchedCards.length === cards.length - 2) {
+          setEndTime(Date.now());
+        }
       }, 500);
     }
   };
@@ -78,6 +107,23 @@ export default function smallSize({
     return shuffledArray;
   };
 
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+
+    if (startTime !== 0 && endTime === 0) {
+      interval = setInterval(() => {
+        const totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+        const minutes = Math.floor(totalSeconds / 60)
+          .toString()
+          .padStart(2, "0");
+        const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+        setElapsedTime(`${minutes}:${seconds}`);
+      }, 1000);
+    }
+
+    return () => clearInterval(interval);
+  }, [startTime, endTime]);
+
   return (
     <MainContainer>
       {cards.map((card, index) => (
@@ -91,6 +137,7 @@ export default function smallSize({
           <h1>{isCardFlipped(index) ? card : ""}</h1>
         </Container>
       ))}
+      <FooterSolo count={count} elapsedTime={elapsedTime} />
     </MainContainer>
   );
 }

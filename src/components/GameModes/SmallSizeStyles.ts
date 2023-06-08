@@ -9,6 +9,7 @@ export const Container = styled.div<{ isMatched: boolean; isFlipped: boolean }>`
   justify-content: center;
   background-color: ${(p) =>
     p.isMatched ? "#BCCED9" : p.isFlipped ? "#FDA214" : "#304859"};
+  transition: all 0.1s;
 
   h1 {
     font-style: normal;
