@@ -86,6 +86,7 @@ export default function smallSize({
           className={`card ${isCardFlipped(index) ? "flipped" : ""}`}
           onClick={() => changeFlip(index)}
           isMatched={isCardMatched(index)}
+          isFlipped={isCardFlipped(index)}
         >
           <h1>{isCardFlipped(index) ? card : ""}</h1>
         </Container>
