@@ -5,17 +5,27 @@ import { Container } from "./GameModeStyles";
 interface Props {
   size: string;
   setPath: (path: string) => void;
-  cards: Array<string>;
-  flipped: boolean[];
-  setFlipped: (flipped: boolean[]) => void;
+  cards: string[];
+  setCards: (cards: string[]) => void;
+  flippedCards: number[];
+  setFlippedCards: (flippedCards: number[]) => void;
+  matchedCards: number[];
+  setMatchedCards: (matchedCards: number[]) => void;
+  disabled: boolean;
+  setDisabled: (disabled: boolean) => void;
 }
 
 export default function GameMode({
   size,
   setPath,
   cards,
-  flipped,
-  setFlipped,
+  setCards,
+  flippedCards,
+  setFlippedCards,
+  matchedCards,
+  setMatchedCards,
+  disabled,
+  setDisabled,
 }: Props) {
   return (
     <Container>
@@ -23,8 +33,13 @@ export default function GameMode({
       <SmallSize
         setPath={setPath}
         cards={cards}
-        flipped={flipped}
-        setFlipped={setFlipped}
+        flippedCards={flippedCards}
+        setFlippedCards={setFlippedCards}
+        setCards={setCards}
+        matchedCards={matchedCards}
+        setMatchedCards={setMatchedCards}
+        disabled={disabled}
+        setDisabled={setDisabled}
       />
     </Container>
   );

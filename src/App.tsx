@@ -10,7 +10,7 @@ function App() {
   const [theme, setTheme] = useState<string>("numbers");
   const [players, setPlayers] = useState<number>(1);
   const [size, setSize] = useState<string>("4x4");
-  const [cards, setCards] = useState<Array<string>>([
+  const [cards, setCards] = useState<string[]>([
     "1",
     "1",
     "2",
@@ -28,9 +28,9 @@ function App() {
     "8",
     "8",
   ]);
-  const [flipped, setFlipped] = useState<boolean[]>(
-    Array(cards.length).fill(false)
-  );
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [matchedCards, setMatchedCards] = useState<number[]>([]);
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   useEffect(() => {
     setCards(shuffle(cards));
@@ -62,8 +62,13 @@ function App() {
                 size={size}
                 setPath={setPath}
                 cards={cards}
-                flipped={flipped}
-                setFlipped={setFlipped}
+                setCards={setCards}
+                flippedCards={flippedCards}
+                setFlippedCards={setFlippedCards}
+                matchedCards={matchedCards}
+                setMatchedCards={setMatchedCards}
+                disabled={disabled}
+                setDisabled={setDisabled}
               />
             }
           ></Route>
