@@ -22,9 +22,6 @@ export default function SmallSize({
   setElapsedTime,
   count,
   setCount,
-  icons,
-  setIcons,
-  theme,
 }: GameModeProps) {
   const location = useLocation();
   setPath(location.pathname);
@@ -88,8 +85,6 @@ export default function SmallSize({
   useEffect(() => {
     const initialCards = cards.concat(cards);
     setCards(shuffle(initialCards));
-    const initialIcons = shuffle(icons);
-    setIcons(initialIcons);
   }, []);
 
   useEffect(() => {
@@ -111,27 +106,16 @@ export default function SmallSize({
 
   return (
     <MainContainer>
-      {theme === "numbers"
-        ? cards.map((card, index) => (
-            <Container
-              key={index}
-              onClick={() => changeFlip(index)}
-              isMatched={isCardMatched(index)}
-              isFlipped={isCardFlipped(index)}
-            >
-              <h1>{isCardFlipped(index) ? card : ""}</h1>
-            </Container>
-          ))
-        : icons.map((icon, index) => (
-            <Container
-              key={index}
-              onClick={() => changeFlip(index)}
-              isMatched={isCardMatched(index)}
-              isFlipped={isCardFlipped(index)}
-            >
-              <img src={isCardFlipped(index) ? icon : ""} />
-            </Container>
-          ))}
+      {cards.map((card, index) => (
+        <Container
+          key={index}
+          onClick={() => changeFlip(index)}
+          isMatched={isCardMatched(index)}
+          isFlipped={isCardFlipped(index)}
+        >
+          <h1>{isCardFlipped(index) ? card : ""}</h1>
+        </Container>
+      ))}
 
       <FooterSolo count={count} elapsedTime={elapsedTime} />
     </MainContainer>
